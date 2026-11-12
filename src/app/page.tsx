@@ -1,6 +1,6 @@
 import { DSANavbar } from "@/components";
 import {
-  AboutUsScreen,
+  WhoWeAreScreen,
   ContactScreen,
   FooterScreen,
   HeroScreen,
@@ -18,7 +18,7 @@ const App = () => {
       <HeroScreen />
       <ServicesScreen />
       <ProjectsScreen />
-      <AboutUsScreen />
+      <WhoWeAreScreen />
       <ContactScreen />
       <FooterScreen />
     </div>

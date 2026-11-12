@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./whatsapp-float.module.css";
 
-// Reemplaza este número por el WhatsApp de ADARK en formato internacional, sin + ni espacios.
-const WHATSAPP_NUMBER = "51999999999";
+const WHATSAPP_NUMBER = "51917397169";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hola, quisiera hacer una consulta.");
 
 const WhatsAppFloat = () => (

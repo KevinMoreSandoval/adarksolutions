@@ -1,0 +1,35 @@
+.section {
+  width: 100%;
+  padding: 92px 0 112px;
+  background: #212121;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto 40px;
+  padding: 0 48px;
+}
+
+.dot {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--color-primary, #4f46e5);
+}
+
+.sectionTitle {
+  color: var(--color-white, #fff);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 720px) {
+  .section { padding: 72px 0 80px; }
+  .sectionHeader { margin-bottom: 28px; padding: 0 20px; }
+}
