@@ -1,0 +1,147 @@
+.footer {
+  background: #212121;
+  color: #f5f5f5;
+  padding: 64px max(6.25vw, 24px) 24px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.5fr) minmax(160px, 0.7fr) minmax(190px, 0.8fr);
+  gap: 56px;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-bottom: 52px;
+}
+
+.brand {
+  max-width: 440px;
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo {
+  display: block;
+  width: min(100%, 420px);
+  height: auto;
+  object-fit: contain;
+}
+
+.brand p {
+  max-width: 320px;
+  margin-top: 20px;
+  color: #bdbdbd;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.heading {
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.navigation ul {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.navigation a,
+.socialList a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #bdbdbd;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.navigation a:hover,
+.navigation a:focus-visible,
+.socialList a:hover,
+.socialList a:focus-visible {
+  color: #fff;
+}
+
+.socialList {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.socialList svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  fill: currentColor;
+}
+
+.socialList li:nth-child(2) svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.socialIconDot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-top: 20px;
+  border-top: 1px solid #3b3b3b;
+}
+
+.bottom p {
+  color: #929292;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .footer {
+    padding: 48px 24px 20px;
+  }
+
+  .content {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 24px;
+    padding-bottom: 36px;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+
+  .bottom {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 420px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .brand {
+    grid-column: auto;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

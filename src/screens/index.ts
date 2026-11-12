@@ -1,0 +1,6 @@
+export {default as AboutUsScreen} from "./about-us"
+export {default as ContactScreen} from "./contact"
+export {default as FooterScreen} from "./footer"
+export {default as HeroScreen} from "./hero"
+export {default as ProjectsScreen} from "./projects"
+export {default as ServicesScreen} from "./services"
