@@ -10,12 +10,10 @@ import {
 import React from "react";
 import styles from "./page.module.css";
 
-const page = () => {
+const App = () => {
   return (
     <div className={styles.pageContainer}>
-      {/* ── Círculo decorativo 720x720 debajo del navbar (solo 1/4 visible) ── */}
       <div className={styles.decorativeCircle} aria-hidden="true" />
-
       <DSANavbar />
       <HeroScreen />
       <ServicesScreen />
@@ -27,4 +25,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default App;
