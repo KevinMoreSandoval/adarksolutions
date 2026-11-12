@@ -2,7 +2,11 @@ import Image from "next/image";
 import React from "react";
 import styles from "./about-us.module.css";
 
-const AboutUsScreen = () => {
+type WhoWeAreScreenProps = {
+  showMoreInfo?: boolean;
+};
+
+const WhoWeAreScreen = ({ showMoreInfo = true }: WhoWeAreScreenProps) => {
   return (
     <section className={styles.section} id="nosotros" aria-labelledby="about-title">
       <div className={styles.container}>
@@ -27,12 +31,14 @@ const AboutUsScreen = () => {
         </div>
 
         <div className={styles.details}>
-          <a className={styles.button} href="#contacto">
-            <span>Más información</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 12h15M13 5l7 7-7 7" />
-            </svg>
-          </a>
+          {showMoreInfo && (
+            <a className={styles.button} href="/about-us">
+              <span>Más información</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 12h15M13 5l7 7-7 7" />
+              </svg>
+            </a>
+          )}
           <p>
             Creemos que cada proyecto comienza por entender el negocio. Por eso,
             priorizamos la cercanía, la transparencia y la planificación para
@@ -45,4 +51,4 @@ const AboutUsScreen = () => {
   );
 };
 
-export default AboutUsScreen;
+export default WhoWeAreScreen;

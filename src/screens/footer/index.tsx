@@ -4,10 +4,10 @@ import React from "react";
 import styles from "./footer.module.css";
 
 const FOOTER_LINKS = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Quiénes somos", href: "#nosotros" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Proyectos", href: "/#proyectos" },
+  { label: "Quiénes somos", href: "/#nosotros" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 const SOCIAL_LINKS = [

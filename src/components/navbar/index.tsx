@@ -7,10 +7,10 @@ import Button from "../button";
 import styles from "./navbar.module.css";
 
 const NAV_LINKS = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Quienes somos", href: "#nosotros" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Proyectos", href: "/#proyectos" },
+  { label: "Quienes somos", href: "/#nosotros" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 const Navbar = () => {
@@ -48,9 +48,7 @@ const Navbar = () => {
             size="m"
             color="var(--navbar-cta-color, #ffffff)"
             onClick={() => {
-              document
-                .querySelector("#contacto")
-                ?.scrollIntoView({ behavior: "smooth" });
+              window.location.href = "/#contacto";
             }}
             className={styles.ctaButton}
           />
@@ -90,9 +88,7 @@ const Navbar = () => {
             className={styles.mobileCta}
             onClick={() => {
               setMenuOpen(false);
-              document
-                .querySelector("#contacto")
-                ?.scrollIntoView({ behavior: "smooth" });
+              window.location.href = "/#contacto";
             }}
           />
         </div>
