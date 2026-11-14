@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import styles from "./services.module.css";
 
@@ -18,7 +18,7 @@ const SERVICES = [
     label: "Desarrollo de sistemas a medida",
     description:
       "Diseñamos sistemas personalizados que automatizan y optimizan los procesos internos de tu empresa.",
-    image: "/assets/img/system.png",
+    image: "/assets/img/mockup-system.png",
     alt: "Desarrollo de sistemas a medida",
   },
   {
@@ -47,17 +47,30 @@ const SERVICES = [
   },
 ];
 
-const AUTO_SLIDE_INTERVAL = 6000;  // intervalo normal (ms)
-const MANUAL_PAUSE_EXTRA   = 6000;  // tiempo adicional tras click manual (ms)
+const AUTO_SLIDE_INTERVAL = 6000;
+const MANUAL_PAUSE_EXTRA = 6000;
 
 const ServicesScreen = () => {
-  const [active, setActive]       = useState(0);
+  const [active, setActive] = useState(0);
   const [animating, setAnimating] = useState(false);
-  // Momento desde el que se cuenta el intervalo del siguiente slide.
-  const lastAdvanceRef = React.useRef(Date.now());
-  const pauseUntilRef = React.useRef(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const lastAdvanceRef = useRef(0);
+  const pauseUntilRef = useRef(0);
 
-  /** Cambia de slide con animación */
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   const switchTo = useCallback((index: number) => {
     if (animating) return;
     setAnimating(true);
@@ -67,7 +80,6 @@ const ServicesScreen = () => {
     }, 250);
   }, [animating]);
 
-  /** Click manual: registra el momento y cambia el slide */
   const goTo = useCallback((index: number) => {
     if (index === active || animating) return;
     const now = Date.now();
@@ -77,7 +89,10 @@ const ServicesScreen = () => {
   }, [active, animating, switchTo]);
 
   useEffect(() => {
-    // Tick cada 500 ms; decide si ya pasó el tiempo suficiente para avanzar
+    if (!isVisible) return;
+
+    lastAdvanceRef.current = Date.now();
+
     const tick = setInterval(() => {
       const now = Date.now();
       if (
@@ -94,27 +109,25 @@ const ServicesScreen = () => {
     }, 500);
 
     return () => clearInterval(tick);
-  }, []);
+  }, [isVisible]);
 
   return (
-    <section className={styles.section} id="servicios">
+    <section className={styles.section} id="servicios" ref={sectionRef}>
 
-      {/* ── Section header – full width, above columns ── */}
       <div className={styles.sectionHeader}>
         <span className={styles.dot} aria-hidden="true" />
         <h2 className={styles.sectionTitle}>Nuestros servicios</h2>
       </div>
 
       <div className={styles.container}>
-        {/* ── Left column ── */}
+
         <div className={styles.left}>
           <ul className={styles.serviceList}>
             {SERVICES.map((service) => (
               <li key={service.id}>
                 <button
-                  className={`${styles.serviceItem} ${
-                    active === service.id ? styles.serviceItemActive : ""
-                  }`}
+                  className={`${styles.serviceItem} ${active === service.id ? styles.serviceItemActive : ""
+                    }`}
                   onClick={() => goTo(service.id)}
                   aria-current={active === service.id ? "true" : undefined}
                 >
@@ -125,31 +138,26 @@ const ServicesScreen = () => {
           </ul>
         </div>
 
-        {/* ── Right column – image ── */}
         <div className={styles.right}>
           <div
-            className={`${styles.imageWrapper} ${
-              animating ? styles.imageOut : styles.imageIn
-            }`}
+            className={`${styles.imageWrapper} ${animating ? styles.imageOut : styles.imageIn
+              }`}
           >
             <Image
               key={active}
               src={SERVICES[active].image}
               alt={SERVICES[active].alt}
               fill
-              className={`${styles.serviceImage} ${
-                active === 4 ? styles.serviceImageSupport : ""
-              }`}
+              className={`${styles.serviceImage} ${active === 4 ? styles.serviceImageSupport : ""
+                }`}
               sizes="(max-width: 768px) 100vw, 50vw"
               priority={active === 0}
             />
           </div>
 
-          {/* Description pill */}
           <p
-            className={`${styles.description} ${
-              animating ? styles.descOut : styles.descIn
-            }`}
+            className={`${styles.description} ${animating ? styles.descOut : styles.descIn
+              }`}
           >
             {SERVICES[active].description}
           </p>
@@ -163,9 +171,8 @@ const ServicesScreen = () => {
             role="tab"
             aria-selected={active === service.id}
             aria-label={service.label}
-            className={`${styles.dotBtn} ${
-              active === service.id ? styles.dotBtnActive : ""
-            }`}
+            className={`${styles.dotBtn} ${active === service.id ? styles.dotBtnActive : ""
+              }`}
             onClick={() => goTo(service.id)}
           />
         ))}
