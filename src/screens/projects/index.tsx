@@ -43,7 +43,7 @@ const ProjectsScreen = () => (
 
     <Carousel label="Proyectos">
       {PROJECTS.map((project) => (
-        <ProjectCard key={project.id} {...project} />
+        <ProjectCard key={project.id} {...project} disabled />
       ))}
     </Carousel>
   </section>

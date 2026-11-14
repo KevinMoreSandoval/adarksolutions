@@ -9,6 +9,7 @@ export type ProjectCardProps = {
   color: "mint" | "pink" | "purple";
   category: "web" | "system" | "mobile";
   href: string;
+  disabled?: boolean;
 };
 
 const CATEGORY_LABELS = {
@@ -17,8 +18,8 @@ const CATEGORY_LABELS = {
   mobile: "Aplicación Móvil",
 } as const;
 
-const ProjectCard = ({ title, image, imageAlt, color, category, href }: ProjectCardProps) => (
-  <article className={styles.card}>
+const ProjectCard = ({ title, image, imageAlt, color, category, href, disabled = false }: ProjectCardProps) => (
+  <article className={`${styles.card} ${disabled ? styles.disabled : ""}`}>
     <div className={`${styles.illustration} ${styles[color]}`}>
       <Image
         className={styles.projectImage}
@@ -54,7 +55,12 @@ const ProjectCard = ({ title, image, imageAlt, color, category, href }: ProjectC
       <span>{CATEGORY_LABELS[category]}</span>
     </div>
 
-    <a className={styles.button} href={href}>
+    <a
+      className={styles.button}
+      href={disabled ? undefined : href}
+      aria-disabled={disabled || undefined}
+      tabIndex={disabled ? -1 : undefined}
+    >
       Ver más
     </a>
   </article>
