@@ -1,197 +1,144 @@
-
 .heroSection {
   position: relative;
+  isolation: isolate;
   width: 100%;
-  min-height: calc(100svh - var(--navbar-height, 0px));
+  height: calc(100svh - var(--navbar-height, 76px));
   display: flex;
-  align-items: center;
-  background-color: transparent;
-  z-index: 2;
-  padding: clamp(40px, 6vh, 80px) 0;
+  align-items: flex-start;
+  overflow: hidden;
+  padding: clamp(56px, 8vh, 92px) 0 0;
+  background: var(--color-white, #fff);
+}
+
+.heroBackdrop {
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 auto;
+  height: 88%;
+  background:
+    linear-gradient(135deg, transparent 0 26%, rgba(255, 255, 255, 0.045) 26% 46%, transparent 46%),
+    linear-gradient(155deg, var(--color-primary-dark, #3730c4), var(--color-primary, #4f46e5) 58%, var(--color-secondary, #7c77ee));
+  clip-path: polygon(0 0, 100% 0, 100% 96%, 0 76%);
 }
 
 .container {
   width: 100%;
+  height: 100%;
   max-width: 1320px;
   margin: 0 auto;
   padding: 0 48px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   position: relative;
 }
 
 .textContent {
-  max-width: 580px;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
-  z-index: 2;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+  flex-shrink: 0;
 }
 
-.titleWrapper {
-  display: flex;
-  flex-direction: column;
-  letter-spacing: -0.02em;
-}
-
-.titlePrimary {
-  font-size: clamp(3.2rem, 5.8vw, 4.8rem) !important;
+.title {
+  max-width: 800px;
+  font-size: clamp(2.6rem, 5.8vw, 4.75rem) !important;
   font-weight: 700 !important;
-  line-height: 1.05 !important;
-  margin-bottom: 8px !important;
-  color: var(--color-black, #212121) !important;
-}
-
-.titleSecondary {
-  font-size: clamp(1.8rem, 4vw, 3.2rem) !important;
-  font-weight: 500 !important;
-  line-height: 1.15 !important;
-  color: var(--color-black, #212121) !important;
-  max-width: 100%;
-  overflow-wrap: anywhere;
-}
-
-/* ── Typewriter cursor parpadeante ── */
-.typewriter::after {
-  content: "|";
-  display: inline-block;
-  color: var(--color-primary, #4F46E5);
-  margin-left: 2px;
-  animation: blink 0.75s step-start infinite;
-}
-
-/* Al terminar de escribir, se elimina el cursor */
-.typewriter.cursorDone::after {
-  display: none;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+  line-height: 1.08 !important;
+  letter-spacing: -0.035em;
+  color: var(--color-white, #fff) !important;
+  text-wrap: balance;
 }
 
 .description {
-  font-size: clamp(1rem, 1.15vw, 1.125rem) !important;
+  max-width: 620px;
+  margin-top: 22px !important;
+  margin-bottom: 26px !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-size: clamp(1rem, 1.25vw, 1.125rem) !important;
   font-weight: 400 !important;
-  line-height: 1.6 !important;
-  color: #555555 !important;
-  max-width: 460px;
-  margin-top: 28px !important;
-  margin-bottom: 36px !important;
+  line-height: 1.65 !important;
+  text-wrap: balance;
 }
 
-.buttonGroup {
+.imageStage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: min(100%, 1040px);
+  margin: clamp(24px, 5vh, 48px) auto 0;
   display: flex;
   align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mockup {
+  display: block;
+  width: auto;
+  height: auto;
   max-width: 100%;
-}
-
-.primaryBtn {
-  font-size: 15px !important;
-  font-weight: 600 !important;
-  border-radius: 8px !important;
-  height: 52px !important;
-  padding: 0 28px !important;
-  box-shadow: 0 4px 14px rgba(33, 33, 33, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease !important;
-}
-
-.primaryBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(33, 33, 33, 0.3);
-}
-
-.secondaryBtn {
-  font-size: 15px !important;
-  font-weight: 600 !important;
-  border-radius: 8px !important;
-  border-width: 1.5px !important;
-  height: 52px !important;
-  padding: 0 28px !important;
-  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease !important;
-}
-
-.secondaryBtn:hover {
-  transform: translateY(-2px);
-  background-color: var(--color-primary, #4F46E5) !important;
-  color: #ffffff !important;
-}
-
-@media (max-width: 1080px) {
-  .container {
-    padding: 0 32px;
-  }
-
-  .textContent {
-    max-width: 500px;
-  }
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 32px rgba(27, 25, 70, 0.2));
 }
 
 @media (max-width: 868px) {
   .heroSection {
-    min-height: auto;
-    padding: 56px 0 64px;
+    height: calc(100svh - 64px);
+    padding-top: 68px;
+  }
+
+  .heroBackdrop {
+    height: 84%;
+    clip-path: polygon(0 0, 100% 0, 100% 96%, 0 83%);
   }
 
   .container {
-    padding: 0 20px;
+    padding: 0 28px;
   }
 
-  .textContent {
-    max-width: 100%;
+  .title {
+    max-width: 680px;
+    font-size: clamp(2.5rem, 7.5vw, 4rem) !important;
   }
 
-  .titlePrimary {
-    font-size: clamp(2.75rem, 8vw, 4.8rem) !important;
-  }
-
-  .titleSecondary {
-    font-size: clamp(1.8rem, 6vw, 3rem) !important;
-  }
-
-  .description {
-    margin-top: 20px !important;
-    margin-bottom: 28px !important;
+  .imageStage {
+    width: min(100%, 900px);
   }
 }
 
 @media (max-width: 600px) {
-  .container {
-    padding: 0 16px;
-  }
-
   .heroSection {
-    padding: 44px 0 52px;
+    height: calc(100svh - 64px);
+    padding-top: 52px;
+    padding-bottom: 12px;
   }
 
-  .titlePrimary {
-    font-size: clamp(2.5rem, 12vw, 3.5rem) !important;
+  .heroBackdrop {
+    height: 80%;
+    clip-path: polygon(0 0, 100% 0, 100% 97%, 0 88%);
   }
 
-  .titleSecondary {
-    font-size: clamp(1.65rem, 8vw, 2.35rem) !important;
-    line-height: 1.2 !important;
+  .container {
+    padding: 0 18px;
+  }
+
+  .title {
+    font-size: clamp(2.35rem, 11vw, 3.4rem) !important;
   }
 
   .description {
-    font-size: 1rem !important;
+    max-width: 430px;
+    margin-top: 18px !important;
+    margin-bottom: 24px !important;
+    font-size: 0.98rem !important;
   }
 
-  .buttonGroup {
-    flex-direction: column;
-    align-items: stretch;
+  .imageStage {
     width: 100%;
-    gap: 12px;
-  }
-
-  .primaryBtn,
-  .secondaryBtn {
-    width: 100%;
-    min-height: 52px !important;
-    height: auto !important;
-    padding: 12px 16px !important;
-    white-space: normal;
-    text-align: center;
+    margin-top: 24px;
   }
 }

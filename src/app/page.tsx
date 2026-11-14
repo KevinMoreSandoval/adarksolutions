@@ -13,7 +13,6 @@ import styles from "./page.module.css";
 const App = () => {
   return (
     <div className={styles.pageContainer}>
-      <div className={styles.decorativeCircle} aria-hidden="true" />
       <DSANavbar />
       <HeroScreen />
       <ServicesScreen />
