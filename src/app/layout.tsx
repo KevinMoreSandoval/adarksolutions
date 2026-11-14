@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import WhatsAppFloat from "@/components/whatsapp-float";
@@ -17,35 +16,108 @@ const socialImageUrl = `${siteUrl}/assets/img/mockup-hero.png`;
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Desarrollo de software, páginas web y apps | ADARK Solutions",
+    default: "ADARK Solutions | Desarrollo web, software y aplicaciones a medida",
     template: "%s | ADARK Solutions",
   },
   description: siteDescription,
+  applicationName: "ADARK Solutions",
+  authors: [{ name: "ADARK Solutions", url: siteUrl }],
+  creator: "ADARK Solutions",
+  publisher: "ADARK Solutions",
   keywords: [
+    "ADARK",
+    "ADARK Solutions",
+    "Adark",
+    "Adark Solutions",
+    "adark solutions",
+    "desarrollo web",
     "desarrollo de software a medida",
-    "desarrollo de páginas web",
-    "diseño y desarrollo de landing pages",
+    "desarrollo de aplicaciones móviles",
     "sistemas empresariales",
-    "aplicaciones móviles",
+    "páginas web para empresas",
+    "diseño y desarrollo de landing pages",
+    "diseño UI UX",
     "soluciones digitales para empresas",
+    "mantenimiento y soporte web",
   ],
-  alternates: { canonical: "/" },
-  robots: { index: true, follow: true },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "es_PE",
-    url: "/",
+    url: siteUrl,
     siteName,
-    title: "Desarrollo web, sistemas y apps a medida | ADARK Solutions",
+    title: "ADARK Solutions | Desarrollo web, software y aplicaciones a medida",
     description: siteDescription,
-    images: [{ url: socialImageUrl, alt: "Diseño web desarrollado por ADARK Solutions" }],
+    images: [
+      {
+        url: socialImageUrl,
+        width: 1462,
+        height: 1076,
+        alt: "Diseño web y software desarrollado por ADARK Solutions",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Desarrollo web, sistemas y apps a medida | ADARK Solutions",
+    title: "ADARK Solutions | Desarrollo web, software y aplicaciones a medida",
     description: siteDescription,
-    images: [{ url: socialImageUrl, alt: "Diseño web desarrollado por ADARK Solutions" }],
+    images: [
+      {
+        url: socialImageUrl,
+        alt: "Diseño web y software desarrollado por ADARK Solutions",
+      },
+    ],
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: siteName,
+      alternateName: ["ADARK", "Adark Solutions", "Adark", "adark"],
+      inLanguage: "es",
+      publisher: {
+        "@id": `${siteUrl}/#organization`,
+      },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: siteName,
+      alternateName: ["ADARK", "Adark Solutions", "Adark", "adark"],
+      url: siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: logoUrl,
+      },
+      image: socialImageUrl,
+      description: siteDescription,
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+51-917-397-169",
+        contactType: "customer service",
+        areaServed: "PE",
+        availableLanguage: ["Spanish", "es"],
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -57,14 +129,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: siteName,
-              url: siteUrl,
-              logo: logoUrl,
-              description: siteDescription,
-            }).replace(/</g, "\\u003c"),
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         />
         {children}

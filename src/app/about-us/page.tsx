@@ -10,17 +10,49 @@ import styles from "./about-us.module.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Desarrollo de soluciones digitales a medida",
+  title: "Quiénes somos - Sobre nosotros",
   description:
-    "Conoce cómo ADARK Solutions transforma las necesidades de cada negocio en soluciones tecnológicas simples, accesibles y funcionales.",
+    "Conoce a ADARK Solutions: nuestra misión, visión y el equipo detrás del desarrollo de páginas web, sistemas y aplicaciones móviles a medida.",
   alternates: { canonical: "/about-us" },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Desarrollo de soluciones digitales a medida | ADARK Solutions",
-    description:
-      "Conoce cómo ADARK Solutions transforma las necesidades de cada negocio en soluciones tecnológicas simples, accesibles y funcionales.",
-    url: "/about-us",
     type: "website",
+    locale: "es_PE",
+    siteName: "ADARK Solutions",
+    title: "Quiénes somos | ADARK Solutions",
+    description:
+      "Conoce a ADARK Solutions: nuestra misión, visión y el equipo detrás del desarrollo de páginas web, sistemas y aplicaciones móviles a medida.",
+    url: "/about-us",
+    images: [
+      {
+        url: "/assets/img/image-corp.avif",
+        width: 1200,
+        height: 630,
+        alt: "Equipo de ADARK Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Quiénes somos | ADARK Solutions",
+    description:
+      "Conoce a ADARK Solutions: nuestra misión, visión y el equipo detrás del desarrollo de páginas web, sistemas y aplicaciones móviles a medida.",
+    images: [
+      {
+        url: "/assets/img/image-corp.avif",
+        alt: "Equipo de ADARK Solutions",
+      },
+    ],
   },
 };
 
