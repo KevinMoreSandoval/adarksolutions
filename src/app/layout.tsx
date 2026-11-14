@@ -12,21 +12,22 @@ const poppins = Poppins({
 });
 
 const logoUrl = `${siteUrl}/assets/img/logo-adark.png`;
+const socialImageUrl = `${siteUrl}/assets/img/mockup-hero.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Desarrollo web, sistemas y apps a medida | ADARK Solutions",
+    default: "Desarrollo de software, páginas web y apps | ADARK Solutions",
     template: "%s | ADARK Solutions",
   },
   description: siteDescription,
   keywords: [
-    "desarrollo web",
-    "páginas web para empresas",
-    "sistemas a medida",
-    "desarrollo de aplicaciones móviles",
-    "diseño UI UX",
-    "mantenimiento y soporte web",
+    "desarrollo de software a medida",
+    "desarrollo de páginas web",
+    "diseño y desarrollo de landing pages",
+    "sistemas empresariales",
+    "aplicaciones móviles",
+    "soluciones digitales para empresas",
   ],
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
@@ -37,17 +38,13 @@ export const metadata: Metadata = {
     siteName,
     title: "Desarrollo web, sistemas y apps a medida | ADARK Solutions",
     description: siteDescription,
-    images: [{ url: logoUrl, width: 248, height: 46, alt: "ADARK Solutions" }],
+    images: [{ url: socialImageUrl, alt: "Diseño web desarrollado por ADARK Solutions" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Desarrollo web, sistemas y apps a medida | ADARK Solutions",
     description: siteDescription,
-    images: [{ url: logoUrl, alt: "ADARK Solutions" }],
-  },
-  icons: {
-    icon: "/assets/img/isotipo-dark.png",
-    apple: "/assets/img/isotipo-dark.png",
+    images: [{ url: socialImageUrl, alt: "Diseño web desarrollado por ADARK Solutions" }],
   },
 };
 

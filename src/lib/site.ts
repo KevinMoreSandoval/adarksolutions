@@ -3,4 +3,4 @@ export const siteUrl = "https://www.adarksolutions.com";
 
 export const siteName = "ADARK Solutions";
 export const siteDescription =
-  "Creamos páginas web, aplicaciones y sistemas a medida para convertir los procesos de tu negocio en soluciones digitales simples.";
+  "Desarrollamos páginas web, landing pages, sistemas empresariales y aplicaciones móviles a medida para ayudar a las empresas a resolver sus retos con soluciones digitales.";

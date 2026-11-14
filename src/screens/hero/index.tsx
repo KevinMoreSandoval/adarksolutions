@@ -8,7 +8,7 @@ const HeroScreen = () => (
     <div className={styles.container}>
       <div className={styles.textContent}>
         <DSAText variant="title" as="h1" className={styles.title}>
-          Tecnología que impulsa tu negocio.
+          Desarrollo web y software a medida para tu negocio.
         </DSAText>
         <DSAText variant="paragraph" className={styles.description}>
           Creamos páginas web, aplicaciones y sistemas que convierten tus

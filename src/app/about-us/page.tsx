@@ -10,12 +10,13 @@ import styles from "./about-us.module.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Quiénes somos",
+  title: "Desarrollo de soluciones digitales a medida",
   description:
     "Conoce cómo ADARK Solutions transforma las necesidades de cada negocio en soluciones tecnológicas simples, accesibles y funcionales.",
   alternates: { canonical: "/about-us" },
+  robots: { index: true, follow: true },
   openGraph: {
-    title: "Quiénes somos | ADARK Solutions",
+    title: "Desarrollo de soluciones digitales a medida | ADARK Solutions",
     description:
       "Conoce cómo ADARK Solutions transforma las necesidades de cada negocio en soluciones tecnológicas simples, accesibles y funcionales.",
     url: "/about-us",
