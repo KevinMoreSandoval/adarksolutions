@@ -78,16 +78,15 @@
 .ctaButton {
   font-weight: 500;
   border-radius: 8px;
-  border: 1.5px solid #ffffff !important;
+  border: 1.5px solid #212121 !important;
   color: #ffffff !important;
-  background-color: transparent !important;
-  transition: all 0.2s ease !important;
+  background-color: #212121 !important;
+  transition: transform 0.2s ease !important;
 }
 
 .ctaButton:hover {
-  background-color: #212121 !important;
-  border-color: #212121 !important;
-  color: #fff !important;
+  transform: scale(1.04);
+  filter: none !important;
 }
 
 .hamburger {

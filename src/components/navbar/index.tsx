@@ -44,9 +44,9 @@ const Navbar = () => {
         <div className={styles.ctaWrapper}>
           <Button
             label="Cotiza Tu Proyecto"
-            variant="outline"
+            variant="solid"
             size="m"
-            color="var(--navbar-cta-color, #ffffff)"
+            color="#212121"
             onClick={() => {
               window.location.href = "/#contacto";
             }}
@@ -82,10 +82,10 @@ const Navbar = () => {
           </ul>
           <Button
             label="Cotiza Tu Proyecto"
-            variant="outline"
+            variant="solid"
             size="m"
-            color="var(--color-primary)"
-            className={styles.mobileCta}
+            color="#212121"
+            className={`${styles.mobileCta} ${styles.ctaButton}`}
             onClick={() => {
               setMenuOpen(false);
               window.location.href = "/#contacto";
