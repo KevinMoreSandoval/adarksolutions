@@ -23,7 +23,7 @@
 
 .eyebrow {
   margin-bottom: 12px;
-  color: #f63370;
+  color: var(--color-primary, #4f46e5);
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -91,10 +91,21 @@
   color: #fff;
 }
 
-.icon1 { background: #ff824f; }
-.icon2 { background: #e7e929; }
-.icon3 { background: #7618f5; }
-.icon4 { background: #91e8cc; }
+.icon1 {
+  background: #ff824f;
+}
+
+.icon2 {
+  background: #e7e929;
+}
+
+.icon3 {
+  background: #7618f5;
+}
+
+.icon4 {
+  background: #91e8cc;
+}
 
 .icon :global(svg) {
   width: 30px;
@@ -146,7 +157,9 @@
     grid-template-columns: 1fr;
   }
 
-  .steps { gap: 14px; }
+  .steps {
+    gap: 14px;
+  }
 
   .imageWrap {
     display: none;
