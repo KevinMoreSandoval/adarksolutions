@@ -14,6 +14,7 @@ const Carousel = ({ children, label }: CarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const items = Children.toArray(children);
   const maxIndex = Math.max(0, items.length - visibleCount);
+  const currentActiveIndex = Math.min(activeIndex, maxIndex);
 
   useEffect(() => {
     const viewport = viewportRef.current;
@@ -31,17 +32,13 @@ const Carousel = ({ children, label }: CarouselProps) => {
   }, []);
 
   useEffect(() => {
-    setActiveIndex((index) => Math.min(index, maxIndex));
-  }, [maxIndex]);
-
-  useEffect(() => {
     const track = viewportRef.current?.querySelector<HTMLElement>("[data-carousel-track]");
     const firstSlide = track?.firstElementChild as HTMLElement | null;
-    const activeSlide = track?.children.item(activeIndex) as HTMLElement | null;
+    const activeSlide = track?.children.item(currentActiveIndex) as HTMLElement | null;
     if (track && firstSlide && activeSlide) {
       track.style.transform = `translateX(-${activeSlide.getBoundingClientRect().left - firstSlide.getBoundingClientRect().left}px)`;
     }
-  }, [activeIndex, visibleCount]);
+  }, [currentActiveIndex, visibleCount]);
 
   const goTo = (index: number) => setActiveIndex(Math.max(0, Math.min(index, maxIndex)));
 
@@ -57,21 +54,21 @@ const Carousel = ({ children, label }: CarouselProps) => {
         </div>
       </div>
 
-      {activeIndex > 0 && (
+      {currentActiveIndex > 0 && (
         <button
           className={`${styles.arrow} ${styles.previous}`}
           type="button"
-          onClick={() => goTo(activeIndex - 1)}
+          onClick={() => goTo(currentActiveIndex - 1)}
           aria-label="Ver anteriores"
         >
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8" /></svg>
         </button>
       )}
-      {activeIndex < maxIndex && (
+      {currentActiveIndex < maxIndex && (
         <button
           className={`${styles.arrow} ${styles.next}`}
           type="button"
-          onClick={() => goTo(activeIndex + 1)}
+          onClick={() => goTo(currentActiveIndex + 1)}
           aria-label="Ver siguientes"
         >
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8" /></svg>
@@ -84,10 +81,10 @@ const Carousel = ({ children, label }: CarouselProps) => {
             <button
               key={index}
               type="button"
-              className={`${styles.dot} ${index === activeIndex ? styles.dotActive : ""}`}
+              className={`${styles.dot} ${index === currentActiveIndex ? styles.dotActive : ""}`}
               onClick={() => goTo(index)}
               aria-label={`Ir al proyecto ${index + 1}`}
-              aria-current={index === activeIndex ? "true" : undefined}
+              aria-current={index === currentActiveIndex ? "true" : undefined}
               disabled={index > maxIndex}
             />
           ))}

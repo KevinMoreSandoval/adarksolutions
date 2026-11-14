@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Button from "../button";
 import styles from "./navbar.module.css";
 
@@ -15,6 +16,7 @@ const NAV_LINKS = [
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <header className={styles.header}>
@@ -48,7 +50,7 @@ const Navbar = () => {
             size="m"
             color="#212121"
             onClick={() => {
-              window.location.href = "/#contacto";
+              router.push("/#contacto");
             }}
             className={styles.ctaButton}
           />
@@ -88,7 +90,7 @@ const Navbar = () => {
             className={`${styles.mobileCta} ${styles.ctaButton}`}
             onClick={() => {
               setMenuOpen(false);
-              window.location.href = "/#contacto";
+              router.push("/#contacto");
             }}
           />
         </div>

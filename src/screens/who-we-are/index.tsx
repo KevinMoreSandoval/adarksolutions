@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import styles from "./about-us.module.css";
 
@@ -32,12 +33,12 @@ const WhoWeAreScreen = ({ showMoreInfo = true }: WhoWeAreScreenProps) => {
 
         <div className={styles.details}>
           {showMoreInfo && (
-            <a className={styles.button} href="/about-us">
+            <Link className={styles.button} href="/about-us">
               <span>Más información</span>
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4 12h15M13 5l7 7-7 7" />
               </svg>
-            </a>
+            </Link>
           )}
           <p>
             Creemos que cada proyecto comienza por entender el negocio. Por eso,
