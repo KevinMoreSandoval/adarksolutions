@@ -7,6 +7,21 @@ import {
   WhoWeAreScreen,
 } from "@/screens";
 import styles from "./about-us.module.css";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Quiénes somos",
+  description:
+    "Conoce cómo ADARK Solutions transforma las necesidades de cada negocio en soluciones tecnológicas simples, accesibles y funcionales.",
+  alternates: { canonical: "/about-us" },
+  openGraph: {
+    title: "Quiénes somos | ADARK Solutions",
+    description:
+      "Conoce cómo ADARK Solutions transforma las necesidades de cada negocio en soluciones tecnológicas simples, accesibles y funcionales.",
+    url: "/about-us",
+    type: "website",
+  },
+};
 
 const AboutUs = () => {
   return (
