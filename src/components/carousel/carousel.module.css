@@ -8,7 +8,6 @@
 
 .viewport {
   width: 100%;
-  /* Deja sitio para la elevación y sombra de las cards sin cambiar el alto del carrusel. */
   margin: -10px 0 -16px;
   padding: 10px 0 16px;
   overflow: hidden;
@@ -45,10 +44,27 @@
   transition: background-color 160ms ease, opacity 160ms ease;
 }
 
-.arrow:hover:not(:disabled) { background: #6710c7; }
-.arrow svg { width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-.previous { left: 4px; }
-.next { right: 4px; }
+.arrow:hover:not(:disabled) {
+  background: #6710c7;
+}
+
+.arrow svg {
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.previous {
+  left: 4px;
+}
+
+.next {
+  right: 4px;
+}
 
 .pagination {
   display: flex;
@@ -59,7 +75,11 @@
   color: #777;
 }
 
-.dots { display: flex; align-items: center; gap: 12px; }
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
 .dot {
   width: 13px;
@@ -72,23 +92,60 @@
   transition: background-color 160ms ease, transform 160ms ease;
 }
 
-.dotActive { width: 40px; border-radius: 999px; background: #5145ed; }
-.dot:disabled { cursor: default; }
-.arrow:focus-visible, .dot:focus-visible { outline: 3px solid #e22f66; outline-offset: 3px; }
+.dotActive {
+  width: 40px;
+  border-radius: 999px;
+  background: #5145ed;
+}
+
+.dot:disabled {
+  cursor: default;
+}
+
+.arrow:focus-visible,
+.dot:focus-visible {
+  outline: 3px solid #e22f66;
+  outline-offset: 3px;
+}
 
 @media (max-width: 1000px) {
-  .track { --carousel-gap: 22px; }
+  .track {
+    --carousel-gap: 22px;
+  }
 }
 
 @media (max-width: 640px) {
-  .carousel { padding: 0 48px; }
-  .track { --carousel-gap: 0px; }
-  .arrow { width: 40px; height: 40px; }
-  .previous { left: 2px; }
-  .next { right: 2px; }
-  .pagination { margin-top: 20px; }
+  .carousel {
+    padding: 0 48px;
+  }
+
+  .track {
+    --carousel-gap: 0px;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .previous {
+    left: 2px;
+  }
+
+  .next {
+    right: 2px;
+  }
+
+  .pagination {
+    margin-top: 20px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .track, .arrow, .dot { transition: none; }
+
+  .track,
+  .arrow,
+  .dot {
+    transition: none;
+  }
 }

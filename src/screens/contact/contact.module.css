@@ -39,12 +39,10 @@
   z-index: -1;
   inset: 0;
   content: "";
-  background: linear-gradient(
-    90deg,
-    var(--color-primary, #4f46e5) 46%,
-    rgba(79, 70, 229, 0.82) 61%,
-    rgba(79, 70, 229, 0.28) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--color-primary, #4f46e5) 46%,
+      rgba(79, 70, 229, 0.82) 61%,
+      rgba(79, 70, 229, 0.28) 100%);
   pointer-events: none;
 }
 
